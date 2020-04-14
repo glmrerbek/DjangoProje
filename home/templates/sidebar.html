@@ -31,19 +31,7 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <select name="catid" class="input search-categories">
-                    <option value="0">Kurumsals</option>
-                    {% recursetree category %}
-                    {% if node.is_leaf_node %}
-                    <option value="{{ node.id }}">{{ node.title }}</option>
-                    {% endif %}
-                    {% if not node.is_leaf_node %}
-                    <optgroup label="{{ node.title }}">
-                        {{ children }}
-                    </optgroup>
-                    {% endif %}
-                    {% endrecursetree %}
-                </select>
+
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="/search/" method="post">

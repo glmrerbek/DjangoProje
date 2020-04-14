@@ -13,7 +13,7 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span>Kurumsal</span>
                     </div>
                     <nav class="header__menu" align="center">
                         <ul style="text-align:left;">
@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-9">
                 <select name="catid" class="input search-categories">
-                    <option value="0">All Categories</option>
+                    <option value="0">Kurumsal</option>
                     {% recursetree category %}
                     {% if node.is_leaf_node %}
                     <option value="{{ node.id }}">{{ node.title }}</option>
@@ -88,6 +88,7 @@
                         <h2>Detay Sayfasi</h2>
                         <div class="breadcrumb__option">
                             <a href="/">Anasayfa</a>
+                            <a href="/category/{{ kurumsal.id }}/{{ kurumsal.slug }}">{{ kurumsal.title }}</a>
                             <span>Detay Sayfasi</span>
                         </div>
                     </div>

@@ -80,7 +80,7 @@ def kurumsal_detail(request, id, slug):
     return render(request, 'kurumsal_detail.html', context)
 
 
-def kurumsal_search(request):
+def kurumsal_search(request):#arama
     if request.method == 'POST':  # Chect form post
         form = SearchForm(request.POST)
         if form.is_valid():
@@ -95,6 +95,7 @@ def kurumsal_search(request):
 
 
 def kurumsal_search_auto(request):
+    #otomatik arama tamamlama
     if request.is_ajax():
         q = request.GET.get('term', '')
         kurumsal = Kurumsal.objects.filter(title__icontains=q)
