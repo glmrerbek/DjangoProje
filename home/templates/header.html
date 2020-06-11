@@ -7,8 +7,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                            <li>Free Shipping for all Order of $99</li>
+                            <li><i class="fa fa-envelope"></i> kurumsal@gmail.com</li>
+                            <li>Kurumsal    Sitemize Hos Geldiniz</li>
                         </ul>
                     </div>
                 </div>
@@ -21,16 +21,39 @@
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
                         <div class="header__top__right__language">
-                            <img "{% static 'img/language.png' %}" alt="">
-                            <div>English</div>
+                            <img src="{% static 'img/turkey.png' %}" alt="">
+                            <div>Türkçe</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
-                                <li><a href="#">Spanis</a></li>
                                 <li><a href="#">English</a></li>
+                                <li><a href="#">Türkçe</a></li>
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            {% if user.id is not None %}
+                            <div>
+                                <strong><img src="{{ request.user.profile.image.url }}"> {{ user.username }} </strong>
+                            </div>
+                            <div class="header__top__right__language">
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="/user/">My Account</a></li>
+                                    <li><a href="/user/comments">Comments</a></li>
+                                    <li><a href="user/contents">Contents</a></li>
+                                    <li><a href="/logout/">LogOut</a></li>
+                                </ul>
+                            </div>
+                            {% else %}
+                            <div>
+                                <nav class="header__menu" align="center">
+                                    <ul>
+                                        <li><a href="/login/"><i class="fa fa-user"></i>Login</a>
+                                         <li><a href="/signup/"><i class="fa fa-user"></i>Sign Up</a></li>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -40,12 +63,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                 <div class="humberger__menu__logo">
-                     <a href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                <div class="humberger__menu__logo" align="center">
+                    <a href="/"> <img src="{% static 'img/logo.png' %}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-8">
-                <nav class="header__menu">
+                <nav class="header__menu" align="center">
                     <ul>
                         <li class="active"><a href="/">Anasayfa</a></li>
                         <li><a href="/hakkimizda">Hakkımızda</a></li>
@@ -62,10 +85,6 @@
                     </ul>
                 </nav>
             </div>
-            
-        </div>
-        <div class="humberger__open">
-            <i class="fa fa-bars"></i>
         </div>
     </div>
 </header>

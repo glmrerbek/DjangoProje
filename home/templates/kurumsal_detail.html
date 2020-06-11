@@ -1,0 +1,257 @@
+{% extends "homebase.html" %}
+{% block title %}{{ Kurumsal.title }} {% endblock %}
+{% block keywords %}{{ Kurumsal.keywords}}{% endblock %}
+{% block description %}{{ Kurumsal.description }}{% endblock %}
+{% block sidebar %}
+{% load static %}
+{% load mptt_tags %}
+<!-- Hero Section Begin -->
+<section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3" style="padding:0;">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>All departments</span>
+                    </div>
+                    <nav class="header__menu" align="center">
+                        <ul style="text-align:left;">
+                            {% recursetree category %}
+                            <li><a href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}</a>
+                                {% if not node.is_leaf_node %}
+                                <ul style="top:0;left:170px;" class="header__menu__dropdown">
+                                    <li> {{ children }}</li>
+                                    <style>
+                                        .header__menu ul li .header__menu__dropdown li:hover>a {
+                                            color: lightgreen;
+                                        }
+                                    </style>
+                                </ul>
+                                {% endif %}
+                            </li>
+                            {% endrecursetree %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <select name="catid" class="input search-categories">
+                    <option value="0">All Categories</option>
+                    {% recursetree category %}
+                    {% if node.is_leaf_node %}
+                    <option value="{{ node.id }}">{{ node.title }}</option>
+                    {% endif %}
+                    {% if not node.is_leaf_node %}
+                    <optgroup label="{{ node.title }}">
+                        {{ children }}
+                    </optgroup>
+                    {% endif %}
+                    {% endrecursetree %}
+                </select>
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="/search/" method="post">
+                            <input id="query" name="query" class="input search-input" type="text"
+                                placeholder="Enter your keyword">
+                            {% csrf_token %}
+                            <script>
+                                $(function () {
+                                    $("#query").autocomplete({
+                                        source: "/search_auto/",
+                                        select: function (event, ui) { //item selected
+                                            AutoCompleteSelectHandler(event, ui)
+                                        },
+                                        minLength: 2,
+                                    });
+                                });
+
+                                function AutoCompleteSelectHandler(event, ui) {
+                                    var selectedObj = ui.item;
+                                }
+                            </script>
+
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{{ kurumsal.image.url}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Detay Sayfasi</h2>
+                        <div class="breadcrumb__option">
+                            <a href="/">Anasayfa</a>
+                            <span>Detay Sayfasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large" src="{{ kurumsal.image.url}}" alt="">
+                        </div>
+                        <div class="product__details__pic__slider owl-carousel">
+                            <img data-imgbigurl="{{ kurumsal.image.url}}" src="{{ kurumsal.image.url}}" alt="">
+                            {% for rs in images %}
+                            <img data-imgbigurl="{{ rs.image.url}}" src="{{ rs.image.url}}" alt="">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3>{{ kurumsal.title }}</h3>
+                        <hr>
+                        <p>{{ kurumsal.detail | safe }}</p>
+                        <ul>
+                            <li><b>Share on</b>
+                                <div class="share">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                    aria-selected="true">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                    aria-selected="false">Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                    aria-selected="false">Reviews <span>(1)</span></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>Products Infomation</h6>
+                                    <p>{{ kurumsal.description }}</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>Products Infomation</h6>
+                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
+                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
+                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
+                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
+                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
+                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
+                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
+                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+                                        Proin eget tortor risus.</p>
+                                    <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
+                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
+                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
+                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
+                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="col-lg-4">
+                                    {% for rs in comments %}
+                                    <div class="single-review">
+                                        <div class="review-heading">
+                                            <div><a href="#"><i class="fa fa-user-o"></i> <b>{{ rs.user.first_name }}
+                                                    </b>
+                                                </a></div>
+                                            <div><a href="#"><i class="fa fa-clock-o"></i> {{ rs.create_at }}</a></div>
+                                            <div class="review-rating pull-right">
+                                                <i class="fa fa-star{% if rs.rate < 1 %}-o empty{% endif %}"></i>
+                                                <i class="fa fa-star{% if rs.rate < 2 %}-o empty{% endif %}"></i>
+                                                <i class="fa fa-star{% if rs.rate < 3 %}-o empty{% endif %}"></i>
+                                                <i class="fa fa-star{% if rs.rate < 4 %}-o empty{% endif %}"></i>
+                                                <i class="fa fa-star{% if rs.rate < 5 %}-o empty{% endif %}"></i>
+                                            </div>
+                                        </div>
+                                        <div class="review-body"> <b>{{ rs.subject }}</b>
+                                            <p>{{ rs.comment }}</p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                    <h4 class="text-uppercase">Write Your Review</h4>
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    <form class="review-form" action="/kurumsal/addcomment/{{ kurumsal.id }}"
+                                        method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input class="input" type="text" name="subject" id="id_subject"
+                                                placeholder="Your Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="input" type="email" name="email"
+                                                placeholder="Email Address" />
+                                        </div>
+                                        <div class=" form-group">
+                                            <textarea class="input" name="comment" id="id_comment"
+                                                placeholder="Your review"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-rating">
+                                                <strong class="text-uppercase">Your Rating: </strong>
+                                                <div class="stars">
+                                                    <input type="radio" id="star5" name="rate" value="1" /><label
+                                                        for="star1"></label>
+                                                    <input type="radio" id="star4" name="rate" value="2" /><label
+                                                        for="star2"></label>
+                                                    <input type="radio" id="star3" name="rate" value="3" /><label
+                                                        for="star3"></label>
+                                                    <input type="radio" id="star2" name="rate" value="4" /><label
+                                                        for="star4"></label>
+                                                    <input type="radio" id="starl" name="rate" value="5" /><label
+                                                        for="star5"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if user.id is not None %}
+                                        <button type="submit" class="primary-btn">Send Comment</button>
+                                        {% else %}
+                                        Yorum Eklemek icin <a href="/login">Login</a> olunuz!
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Details Section End -->
+    {% endblock %}

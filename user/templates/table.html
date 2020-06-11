@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th class="text-left"></th>
+    <td><img src="{{ profile.image.url }}" width="50" height="50"> </td>
+  </tr>
+  <tr>
+    <th class="text-left">Name Surname</th>
+    <td class="text-left">{{ profile.user_name }}</td>
+  </tr>
+  <tr>
+    <th class="text-left">Email</th>
+    <td class="text-left">{{ profile.user.email }}</td>
+  </tr>
+  <tr>
+    <th class="text-left">Phone</th>
+    <td class="text-left">{{ profile.phone }}</td>
+  </tr>
+  <tr>
+    <th class="text-left">Addres</th>
+    <td class="text-left">{{ profile.address }}</td>
+  </tr>
+<tr>
+    <th class="text-left">City</th>
+    <td class="text-left">{{ profile.city }}</td>
+  </tr>
+<tr>
+    <th class="text-left">Country</th>
+    <td class="text-left">{{ profile.country }}</td>
+  </tr>
+  <tr>
+    <th class="text-center"><a href="/user/update" class="primary-btn">Update Prfile</a></th>
+    <th class="text-center"><a href="/user/password" class="primary-btn">Change Password</a></th>
+  </tr>
+  
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% extends "homebase.html" %}
+{% block title %} Products Search Results {% endblock %}
+{% block keywords %} {{ categorydata.keywords }} {% endblock %}
+{% block description %} {{ categoryadata.description }} {% endblock %}
+{% load static %}
+{% block head %}
+
+<link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Search</h2>
+                    <div class="breadcrumb__option">
+                        <a href="/">Anasayfa</a>
+                        <span>Kategoriler</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<hr>
+<!-- Breadcrumb Section End -->
+<!-- section -->
+<style>
+.renk :hover {
+  background-color: #4E0466;
+}
+</style>
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!--  Product Details -->
+            <table cellpadding="3" width="1200">
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                </tr>
+                {% for rs in kurumsal %}
+                <tr>
+                    <td> <a href="/kurumsal/{{ rs.id }}/{{ rs.slug }}"><br> <img heigth="250" width="250"
+                                src="{{ rs.image.url }}" style="..." alt=""> </a></td>
+                    <td>
+                        <h4 class="renk" class="product-name"><a href="/kurumsal/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
+                    </td>
+                    <td class="renk"> <a href="/category/{{ rs.category.id }}/{{ rs.category.slug }}"> {{ rs.category }} </a> </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
