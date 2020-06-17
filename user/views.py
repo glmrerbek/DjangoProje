@@ -7,7 +7,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from user.forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from content.models import Content, ContentForm, Menu
+from kurumsal.models import ContentForm, ContentImageForm, Images, Kurumsal
 
 
 # Create your views here.
@@ -89,7 +89,7 @@ def addcontent(request):
         form = ContentForm(request.POST, request.FILES)
         if form.is_valid():
             current_user = request.user
-            data = Content()  # model ile bağlantı kur
+            data = Kurumsal()  # model ile bağlantı kur
             data.user_id = current_user.id
             data.title = form.cleaned_data['title']
             data.keywords = form.cleaned_data['keywords']
@@ -99,7 +99,8 @@ def addcontent(request):
             data.slug = form.cleaned_data['slug']
             data.detail = form.cleaned_data['detail']
             data.status = 'False'
-            data.save()  # verirabanına kaydet
+            data.category=form.cleaned_data['category']
+            data.save()
             messages.success(request, 'Your Content Insterted Successfuly')
             return HttpResponseRedirect('/user/contents')
         else:
@@ -108,19 +109,17 @@ def addcontent(request):
             return HttpResponseRedirect('/user/addcontent')
     else:
         category = Category.objects.all()
-        menu = Menu.objects.all()
         form = ContentForm()
         context = {
             'category': category,
             'form': form,
-            'menu': menu, }
+        }
         return render(request, 'user_addcontent.html', context)
 
 
 @login_required(login_url='/login')  # Check login
 def contentedit(request, id):
-    content = Content.objects.get(id=id)
-    menu = Menu.objects.all()
+    content = Kurumsal.objects.get(id=id)
     if request.method == 'POST':
         form = ContentForm(request.POST, request.FILES, instance=content)
         if form.is_valid():
@@ -137,19 +136,17 @@ def contentedit(request, id):
         context = {
             'category': category,
             'form': form,
-            'menu': menu, }
+        }
         return render(request, 'user_addcontent.html', context)
 
 
 @login_required(login_url='/login')
 def contents(request):
     category = Category.objects.all()
-    menu = Menu.objects.all()
     current_user = request.user
-    contents = Content.objects.filter(user_id=current_user.id)
+    contents = Kurumsal.objects.filter(user_id=current_user.id)
     context = {
         'category': category,
-        'menu': menu,
         'contents': contents,
     }
     return render(request, 'user_contents.html', context)
@@ -158,6 +155,36 @@ def contents(request):
 @login_required(login_url='/login')  # Check login
 def contentdelete(request, id):
     current_user = request.user
-    Content.objects.filter(id=id, user_id=current_user.id).delete()
+    Kurumsal.objects.filter(id=id, user_id=current_user.id).delete()
     messages.success(request, 'Content deleted..')
     return HttpResponseRedirect('/user/contents')
+
+
+def contenaddimage(request, id):
+    if request.method == 'POST':
+        lasturl = request.META.get('HTTP_REFERER')
+        form = ContentImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = Images()
+            data.title = form.cleaned_data['title']
+            data.kurumsal_id = id
+            data.image = form.cleaned_data['image']
+            data.save()
+            messages.success(
+                request, 'Your image has been successfully uploaded')
+            return HttpResponseRedirect(lasturl)
+        else:
+            messages.warning(request, 'Form Error :' + str(form.errors))
+            return HttpResponseRedirect(lasturl)
+    else:
+        category = Category.objects.all()
+        content = Kurumsal.objects.get(id=id)
+        images = Images.objects.filter(kurumsal_id=id)
+        form = ContentImageForm()
+        context = {
+            'content': content,
+            'images': images,
+            'form': form,
+            'category': category,
+        }
+        return render(request, 'user_gallery.html', context)

@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c7e8153-eb17-4cfc-9f0b-4698f520b689" name="Default Changelist" comment="" />
+    <list default="true" id="1c7e8153-eb17-4cfc-9f0b-4698f520b689" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/home/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/hakkimizda.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/hakkimizda.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/homebase.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/homebase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/iletisim.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/iletisim.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/kurumsal_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/kurumsal_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/kurumsal_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/kurumsal_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/referanslarimiz.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/referanslarimiz.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/slider.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/slider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/slidershow.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/slidershow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kurumsal/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kurumsal/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proje/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/proje/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proje/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/proje/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/templates/user_addcontent.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/templates/user_addcontent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/templates/user_comments.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/templates/user_comments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/templates/user_contents.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/templates/user_contents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/templates/user_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/templates/user_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/templates/user_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/templates/user_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +45,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1bZNUx2IU8Am379Q8819RBfelRj" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/kurumsal" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -83,10 +116,23 @@
       <workItem from="1588835679850" duration="35000" />
       <workItem from="1588835717347" duration="7683000" />
       <workItem from="1588844594980" duration="6725000" />
+      <workItem from="1592422592162" duration="2057000" />
+      <workItem from="1592425627174" duration="70000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

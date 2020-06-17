@@ -7,6 +7,9 @@ from random import choices
 from django.contrib.auth.models import User
 from django import forms
 from django.urls import reverse
+from django.forms.widgets import FileInput, Select, TextInput
+from ckeditor.widgets import CKEditorWidget
+from django.forms import ModelForm
 # Create your models here.
 class Category(MPTTModel):
     STATUS = (
@@ -51,16 +54,25 @@ class Category(MPTTModel):
 #iki amacı vardır bu yapının hem açılır pencerede tablo oluşturur hemde adminde yönetimi sağlanır
 #kategoride isim yazarak arama yapmayı sağlar
 
+
+TYPE = (
+    ('haber', 'haber'),
+    ('duyuru', 'duyuru'),
+    ('etkinlik', 'etkinlik'),
+)
+
 class Kurumsal(models.Model):
     STATUS=(
         ('True', 'Evet'),
         ('False', 'Hayir')
     )
-    category=models.ForeignKey (Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=150)
     description = models.CharField(max_length=255)
     keywords= models.CharField(max_length=255)
     image= models.ImageField(upload_to ='images/' )
+    type = models.CharField(max_length=10, choices=TYPE)
     status= models.CharField(max_length=10, choices=STATUS)
     creat_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -112,3 +124,24 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['subject', 'comment', 'rate']
         
+
+class ContentForm(ModelForm):
+    class Meta:
+        model = Kurumsal
+        fields = ['type', 'category', 'title', 'slug', 'keywords',
+                  'description', 'image', 'detail']
+        widgets = {
+            'title': TextInput(attrs={'class': 'input', 'placeholder': 'title'}),
+            'slug': TextInput(attrs={'class': 'input', 'placeholder': 'slug'}),
+            'keywords': TextInput(attrs={'class': 'input', 'placeholder': 'keywords'}),
+            'description': TextInput(attrs={'class': 'input', 'placeholder': 'description'}),
+            'type': Select(attrs={'class': 'input', 'placeholder': 'city'}, choices=TYPE),
+            'image': FileInput(attrs={'class': 'input', 'placeholder': 'image', }),
+            'detail': CKEditorWidget(),
+        }
+
+
+class ContentImageForm(ModelForm):
+    class Meta:
+        model = Images
+        fields = ['title', 'image']

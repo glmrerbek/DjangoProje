@@ -30,7 +30,9 @@
       {% else %}
       <div class="item">
         {% endif %}
-        <img src="{{ rs.image.url }}" alt="Flowers in Chania" width="860" height="245">
+        <a href="/kurumsal/{{ rs.id }}/{{ rs.slug }}">
+        <img src="{{ rs.image.url }}" alt="Flowers in Chania" width="860" style="height: 400px">
+        </a>
         <div class="carousel-caption">
           <h3><a href="/kurumsal/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h3>
           {% comment %} <p>{{ rs.slug }}</p> {% endcomment %}

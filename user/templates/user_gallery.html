@@ -1,0 +1,41 @@
+{% extends "homebase.html" %}
+{% block title %}Gallery-{{ profile.user_name }}{% endblock %}
+{% block keywords %}{{ setting.keywords}}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+{% load static %}
+{% block sidebar %}
+
+
+<h1 style="font:bold 20px Tahoma;color:lightgreen;">{{kurumsal.title}}</h1>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}" role="alert">
+	{{ message|safe }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+
+	<input type="hidden" name="kurumsal_id" value="{{kurumsal.id}}">
+	<p>Baslik</p>
+	<input type="text" name="title" class="input" placeholder="Baslik" />
+	<p>Resim</p>
+	<input type="file" name="image" class="input" accept="image/*" placeholder="Baslik" />
+	<p></p>
+	<button type="submit"> Yukle</button>
+
+
+
+
+</form>
+
+<h2>Resim Galerisi</h2>
+{% for rs in images %}
+<img src="{{rs.image.url}}" width="200px" height="150px" style="float:left;" />
+{% endfor %}
+
+{% endblock %}

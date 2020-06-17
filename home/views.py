@@ -1,29 +1,27 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from home.models import ContactFormMessage, ContactFormu, Setting, UserProfile
+from home.models import ContactFormMessage, ContactFormu, FAQ, Setting, UserProfile
 from django.contrib import messages
 from kurumsal.models import Category, Comment, Images, Kurumsal
 from home.forms import SearchForm, SignUpForm
 import json
 from django.contrib.auth import authenticate, login, logout
-from content.models import CImages, Content, Menu
 # Create your views here.
 
 
 def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Kurumsal.objects.all()[:5]
-    menu = Menu.objects.all()
     category = Category.objects.all()
     haberler = Kurumsal.objects.all().order_by('-id')[:4]
-    duyrular = Content.objects.filter(type='duyuru', status='True').order_by('-id')[:4]
+    duyrular = Kurumsal.objects.filter(type='duyuru', status='True').order_by('-id')[:4]
     context = {'setting': setting,
                'page': 'home',
                'sliderdata': sliderdata,
                'category': category,
                'haberler': haberler,
                'duyrular': duyrular,
-               'menu': menu,}
+    }
     return render(request, 'index.html', context)
 
 
@@ -160,12 +158,11 @@ def signup_view(request):
     return render(request, 'signup.html', context)
 
 
-def menu(request, id):
-    content = Content.objects.get(menu_id=id)
-    if content:
-        link = '/content/'+str(content.id)+'/menu'
-        return HttpResponseRedirect(link)
-    else:
-        messages.warning(request, "Hata ! İlgili içerik bulunamadı ")
-        link = '/'
-        return HttpResponseRedirect(link)
+def faq(request):
+    category = Category.objects.all()
+    faq = FAQ.objects.all().order_by('ordernumber')
+    context = {'category': category,
+               'faq': faq,
+               }
+
+    return render(request, 'faq.html', context)

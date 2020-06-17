@@ -1,4 +1,12 @@
 {% load static %}
+{% load mptt_tags %}
+{% block head %}
+<style>
+    a:hover {
+        color: #640000;
+    }
+</style>
+{% endblock %}
 <!-- Header Section Begin -->
 <header class="header">
     <div class="header__top">
@@ -15,10 +23,10 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="https://www.facebook.com/turkishaerospace/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/gulmiraerbekk/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://twitter.com/TUSAS_TR"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/channel/UC4A34yFloIv5dFUC3ogXHgQ"><i class="fa fa-youtube"></i></a>
                         </div>
                         <div class="header__top__right__language">
                             <img src="{% static 'img/turkey.png' %}" alt="">
@@ -39,7 +47,7 @@
                                 <ul>
                                     <li><a href="/user/">My Account</a></li>
                                     <li><a href="/user/comments">Comments</a></li>
-                                    <li><a href="user/contents">Contents</a></li>
+                                    <li><a href="/user/contents">Contents</a></li>
                                     <li><a href="/logout/">LogOut</a></li>
                                 </ul>
                             </div>
@@ -64,7 +72,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="humberger__menu__logo" align="center">
-                    <a href="/"> <img src="{% static 'img/logo.png' %}" alt=""></a>
+                    <a href="/"> <img src="{% static 'img/kurumsal_logo.jpg' %}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -72,13 +80,13 @@
                     <ul>
                         <li class="active"><a href="/">Anasayfa</a></li>
                         <li><a href="/hakkimizda">Hakkımızda</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="header__menu__dropdown">
+                        <li><a href="/sss">Sorular</a>
+                            {% comment %} <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
                                 <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                 <li><a href="./checkout.html">Check Out</a></li>
                                 <li><a href="./blog-details.html">Blog Details</a></li>
-                            </ul>
+                            </ul> {% endcomment %}
                         </li>
                         <li><a href="/referanslar">Referanslar</a></li>
                         <li><a href="/iletisim">İLETİŞİM</a></li>

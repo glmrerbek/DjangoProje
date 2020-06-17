@@ -134,7 +134,7 @@ ol {
     right: 0;
     height: 4px;
     width: 80px;
-    background: #4B0082;
+    background: #D73535;
     content: "";
     margin: 0 auto;
 }
@@ -173,7 +173,7 @@ ol {
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 700;
-    background: #4B0082;
+    background: #D73535;
     letter-spacing: 2px;
 }
 
@@ -184,7 +184,7 @@ ol {
     text-transform: uppercase;
     display: inline-block;
     padding: 13px 30px 12px;
-    background: #4B0082;
+    background: #D73535;
     border: none;
 }
 
@@ -224,7 +224,7 @@ ol {
     50% {
         -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
-        border: 4px solid #673ab7;
+        border: 4px solid #D73535;
         border-left-color: transparent;
     }
     100% {
@@ -243,7 +243,7 @@ ol {
     }
     50% {
         -webkit-transform: rotate(180deg);
-        border: 4px solid #673ab7;
+        border: 4px solid #D73535;
         border-left-color: transparent;
     }
     100% {
@@ -457,7 +457,7 @@ ol {
 }
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
-    color: #4B0082;
+    color: #D73535;
 }
 
 .header__menu ul li .header__menu__dropdown li a {
@@ -468,7 +468,7 @@ ol {
 }
 
 .header__menu ul li.active a {
-    color: #4B0082;
+    color: #D73535;
 }
 
 .header__menu ul li:hover .header__menu__dropdown {
@@ -478,7 +478,7 @@ ol {
 }
 
 .header__menu ul li:hover>a {
-    color: #4B0082;
+    color: #D73535;
 }
 
 .header__menu ul li:last-child {
@@ -532,7 +532,7 @@ ol {
 .header__cart ul li a span {
     height: 13px;
     width: 13px;
-    background: #4B0082;
+    background: #D73535;
     font-size: 10px;
     color: #ffffff;
     line-height: 13px;
@@ -596,7 +596,7 @@ ol {
 }
 
 .hero__categories__all {
-    background: #45046a;
+    background: #D73535;
     position: relative;
     padding: 10px 25px 10px 40px;
     cursor: pointer;
@@ -747,7 +747,7 @@ ol {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 4px;
-    color: #4B0082;
+    color: #D73535;
 }
 
 .hero__text h2 {
@@ -851,7 +851,7 @@ ol {
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background: #4B0082;
+    background: #D73535;
     content: "";
     opacity: 0;
 }
@@ -899,8 +899,8 @@ ol {
 }
 
 .featured__item__pic__hover li:hover a {
-    background: #4B0082;
-    border-color: #4B0082;
+    background: #D73535;
+    border-color: #D73535;
 }
 
 .featured__item__pic__hover li:hover a i {
@@ -1340,8 +1340,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-    background: #4B0082;
-    border-color: #4B0082;
+    background: #D73535;
+    border-color: #D73535;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1539,7 +1539,7 @@ ol {
 }
 
 .filter__option span:hover {
-    color: #4B0082;
+    color: #D73535;
 }
 
 .product__item {
@@ -1580,8 +1580,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-    background: #4B0082;
-    border-color: #4B0082;
+    background: #D73535;
+    border-color: #D73535;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1661,8 +1661,8 @@ ol {
 
 .product__pagination a:hover,
 .blog__pagination a:hover {
-    background: #4B0082;
-    border-color: #4B0082;
+    background: #D73535;
+    border-color: #D73535;
     color: #ffffff;
 }
 
@@ -2174,8 +2174,8 @@ ol {
 }
 
 .checkout__input__checkbox label input:checked~.checkmark {
-    background: #4B0082;
-    border-color: #4B0082;
+    background: #D73535;
+    border-color: #D73535;
 }
 
 .checkout__input__checkbox label input:checked~.checkmark:after {
@@ -2404,7 +2404,7 @@ ol {
 }
 
 .blog__sidebar__item ul li a:hover {
-    color: #4B0082;
+    color: #D73535;
 }
 
 .blog__sidebar__search {
@@ -2626,7 +2626,7 @@ ol {
 }
 
 .blog__details__widget .blog__details__social a:hover {
-    color: #4B0082;
+    color: #D73535;
 }
 
 .blog__details__widget .blog__details__social a:last-child {
@@ -2745,7 +2745,7 @@ ol {
 }
 
 .footer__widget .footer__widget__social a:hover {
-    background: #4B0082;
+    background: #D73535;
     color: #ffffff;
     border-color: #ffffff;
 }
@@ -2784,7 +2784,7 @@ ol {
 
 .contact__widget span {
     font-size: 36px;
-    color: #4B0082;
+    color: #D73535;
 }
 
 .contact__widget h4 {
@@ -2824,7 +2824,7 @@ ol {
 
 .map .map-inside i {
     font-size: 48px;
-    color: #4B0082;
+    color: #D73535;
     position: absolute;
     bottom: -75px;
     left: 50%;
@@ -3085,7 +3085,7 @@ ol {
     .humberger__menu__cart ul li a span {
         height: 13px;
         width: 13px;
-        background: #4B0082;
+        background: #D73535;
         font-size: 10px;
         color: #ffffff;
         line-height: 13px;
@@ -3151,7 +3151,7 @@ ol {
         -webkit-border-radius: 0;
         border-radius: 0;
         background: transparent;
-        color: #4B0082;
+        color: #D73535;
     }
     .humberger__menu__wrapper .slicknav_nav .slicknav_row,
     .humberger__menu__wrapper .slicknav_nav a {
@@ -3344,7 +3344,7 @@ ol {
     .humberger__menu__cart ul li a span {
         height: 13px;
         width: 13px;
-        background: #4B0082;
+        background: #D73535;
         font-size: 10px;
         color: #ffffff;
         line-height: 13px;
@@ -3410,7 +3410,7 @@ ol {
         -webkit-border-radius: 0;
         border-radius: 0;
         background: transparent;
-        color: #4B0082;
+        color: #D73535;
     }
     .humberger__menu__wrapper .slicknav_nav .slicknav_row,
     .humberger__menu__wrapper .slicknav_nav a {

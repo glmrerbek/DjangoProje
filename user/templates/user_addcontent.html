@@ -4,40 +4,73 @@
 {% block description %}{{ setting.description }}{% endblock %}
 {% block sidebar %}
 {% load static %}
+{% load mptt_tags %}
 <!-- Hero Section Begin -->
 <section class="hero hero-normal">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3" style="padding:0;">
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span>Kurumsal</span>
                     </div>
-                    <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
-                    </ul>
+                    <nav class="header__menu" align="center">
+                        <ul class="header__menu__dropdown" style="text-align:left;">
+                            {% recursetree category %}
+                            <li><a href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}</a>
+                                {% if not node.is_leaf_node %}
+                                <ul style="top:0;left:170px;" class="header__menu__dropdown">
+                                    <li> {{ children }}</li>
+                                    <style>
+                                        .header__menu ul li .header__menu__dropdown li:hover>a {
+                                            color: lightgreen;
+                                        }
+                                    </style>
+                                </ul>
+                                {% endif %}
+                            </li>
+                            {% endrecursetree %}
+                        </ul>
+                    </nav>
                 </div>
             </div>
             <div class="col-lg-9">
+                <select name="catid" class="input search-categories">
+                    <option value="0">All Categories</option>
+                    {% recursetree category %}
+                    {% if node.is_leaf_node %}
+                    <option value="{{ node.id }}">{{ node.title }}</option>
+                    {% endif %}
+                    {% if not node.is_leaf_node %}
+                    <optgroup label="{{ node.title }}">
+                        {{ children }}
+                    </optgroup>
+                    {% endif %}
+                    {% endrecursetree %}
+                </select>
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-                            <input type="text" placeholder="What do yo u need?">
+                        <form action="/search/" method="post">
+                            <input id="query" name="query" class="input search-input" type="text"
+                                placeholder="Enter your keyword">
+                            {% csrf_token %}
+                            <script>
+                                $(function () {
+                                    $("#query").autocomplete({
+                                        source: "/search_auto/",
+                                        select: function (event, ui) { //item selected
+                                            AutoCompleteSelectHandler(event, ui)
+                                        },
+                                        minLength: 2,
+                                    });
+                                });
+
+                                function AutoCompleteSelectHandler(event, ui) {
+                                    var selectedObj = ui.item;
+                                }
+                            </script>
+
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
@@ -77,10 +110,11 @@
             </div>
             <div class="col-lg-9">
                 <h4 style="text-align:center;"><b>Contents</b></h4>
+                <br>      
                 <div class="section-title">
                     <a class="primary-btn" href="/user/addcontent">Add Content</a>
                 </div>
-                <br> <br>
+                <hr>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <fieldset class="form-group">
@@ -92,7 +126,6 @@
                         <button class="primary-btn" type="submit">SAVE</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
